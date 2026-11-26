@@ -17,14 +17,14 @@ sudo systemctl enable nginx
 sudo systemctl status nginx
 sudo systemctl status php*
 
-# Dans WLS
+# *** Dans WLS ***
 # Transférer les fichiers de Windows vers la machine Linux
 code .
 
 # Transférer les fichiers du site par défaut vers la VM
 gcloud compute scp ~/site-web-default.zip vm-main-1573849:/tmp/
 
-# Dans la VM
+# *** Dans la VM ***
 # Écraser les fichiers du site par défaut
 cd /var/www/html
 sudo apt install unzip
@@ -45,10 +45,11 @@ ls -la /var/www/wordpress
 sudo chown -R www-data:www-data /var/www/wordpress
 sudo chmod -R u=rwX,go=rX /var/www/wordpress
 
-# Créer le site wordpress dans nginx
+# Créer le site Wordpress dans nginx
 cd /etc/nginx/sites-available
 sudo cp default wordpress
 sudo nano wordpress
 
+# Activer le site Wordpress
 cd ../sites-enabled
 sudo ln -s /etc/nginx/sites-available/wordpress wordpress
